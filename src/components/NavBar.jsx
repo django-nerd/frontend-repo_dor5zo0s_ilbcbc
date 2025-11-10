@@ -1,5 +1,5 @@
 // NavBar.jsx
-// Sticky, responsive navigation bar with brand and simple anchors
+// Sticky, responsive navigation bar with brand, anchors, and gold accent
 import React from 'react';
 import { GraduationCap, Menu } from 'lucide-react';
 
@@ -15,14 +15,17 @@ const NavBar = () => {
   ];
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-gray-200 bg-white/80 backdrop-blur">
+    <header className="sticky top-0 z-50 w-full border-b border-blue-100/60 bg-white/80 backdrop-blur">
       <nav className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 sm:px-6 lg:px-8">
-        {/* Brand section with logo icon */}
-        <a href="#home" className="flex items-center gap-2">
-          <div className="flex h-9 w-9 items-center justify-center rounded-md bg-blue-600 text-white">
+        {/* Brand section */}
+        <a href="#home" className="group flex items-center gap-2">
+          <div className="relative flex h-10 w-10 items-center justify-center rounded-md bg-blue-600 text-white shadow-sm ring-1 ring-blue-500/40">
             <GraduationCap size={20} />
+            <span className="pointer-events-none absolute -bottom-1 h-1 w-6 rounded-full bg-amber-400/80" />
           </div>
-          <span className="font-semibold text-gray-900">Bluecrest University</span>
+          <span className="font-semibold tracking-tight text-gray-900">
+            Bluecrest University
+          </span>
         </a>
 
         {/* Desktop links */}
@@ -31,9 +34,10 @@ const NavBar = () => {
             <li key={l.href}>
               <a
                 href={l.href}
-                className="text-sm font-medium text-gray-600 transition-colors hover:text-gray-900"
+                className="relative text-sm font-medium text-gray-600 transition-colors hover:text-gray-900"
               >
                 {l.label}
+                <span className="absolute inset-x-0 -bottom-1 mx-auto hidden h-0.5 w-6 rounded-full bg-amber-400 md:group-hover:block" />
               </a>
             </li>
           ))}
@@ -59,14 +63,14 @@ const NavBar = () => {
 
       {/* Mobile dropdown */}
       {open && (
-        <div className="border-t border-gray-200 bg-white md:hidden">
+        <div className="border-t border-blue-100 bg-white md:hidden">
           <div className="mx-auto max-w-7xl px-4 py-4 sm:px-6 lg:px-8">
             <ul className="flex flex-col gap-3">
               {links.map((l) => (
                 <li key={l.href}>
                   <a
                     href={l.href}
-                    className="block rounded-md px-2 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50"
+                    className="block rounded-md px-2 py-2 text-sm font-medium text-gray-700 hover:bg-blue-50"
                     onClick={() => setOpen(false)}
                   >
                     {l.label}
